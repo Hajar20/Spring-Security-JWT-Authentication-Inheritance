@@ -19,16 +19,12 @@ public class User implements Serializable {
 	private String password;
 	@Column
 	private String fullname;
-	@Column
-	private char gender;
-     @Column
-	private String image = "default.png";
-	public User(String email, String password, String fullname, char gender,String image) {
-		this.gender = gender;
+
+
+	public User(String email, String password, String fullname) {
 		this.email = email;
 		this.password = password;
 		this.fullname = fullname;
-		this.image = image;
 	}
 
 	public User() {}
@@ -36,24 +32,6 @@ public class User implements Serializable {
 	public long getId() {
 		return id;
 	}
-
-	public char getGender() {
-		return gender;
-	}
-
-	public void setGender(char gender) {
-		this.gender = gender;
-	}
-
-	public String getImage() {
-		return image;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
-	}
-
-
 
 	public String getEmail() {
 		return email;

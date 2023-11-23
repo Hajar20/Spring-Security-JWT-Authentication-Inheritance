@@ -15,10 +15,8 @@ public class RecruiterDetailsImpl extends UserDetailsImpl{
                 rec.getFullname(),
                 rec.getEmail(),
                 rec.getPassword(),
-                rec.getGender(),
-                rec.getImage(), authorities);
+                authorities);
     }
-
     public static RecruiterDetailsImpl build(Recruiter rec) {
         List<GrantedAuthority> authorities = new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority("ROLE_RECRUITER"));

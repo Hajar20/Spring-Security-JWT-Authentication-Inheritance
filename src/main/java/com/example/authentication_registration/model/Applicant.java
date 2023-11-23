@@ -13,16 +13,11 @@ public class Applicant extends User implements Serializable {
 	private Date birthDate;
 	@Column
 	private String address;
-
 	@Column
 	private int phone;
-	@Column
-	private String status;
 
-
-
-	public Applicant(String email, String password, String fullname,String image ,Date birthDate, String address, int phone,char gender) {
-		super(email, password, fullname,gender,image);
+	public Applicant(String email, String password, String fullname,Date birthDate, String address, int phone) {
+		super(email, password, fullname);
 		this.birthDate = birthDate;
 		this.address = address;
 		this.phone = phone;
@@ -55,14 +50,6 @@ public class Applicant extends User implements Serializable {
 
 	public void setPhone(int phone) {
 		this.phone = phone;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
 	}
 
 }

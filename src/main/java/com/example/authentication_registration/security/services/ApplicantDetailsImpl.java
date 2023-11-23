@@ -12,15 +12,13 @@ public class ApplicantDetailsImpl extends UserDetailsImpl {
     private final Date birthDate;
     private final String address;
     private final int phone;
-    private final String status;
 
     public ApplicantDetailsImpl(Applicant applicant,Collection<? extends GrantedAuthority> authorities) {
-        super(applicant.getId(),applicant.getFullname(),applicant.getEmail(),applicant.getPassword(),applicant.getGender(), applicant.getImage(),authorities);
+        super(applicant.getId(),applicant.getFullname(),applicant.getEmail(),applicant.getPassword(),authorities);
 
         this.birthDate = applicant.getBirthDate();
         this.address = applicant.getAddress();
         this.phone = applicant.getPhone();
-        this.status = applicant.getStatus();
     }
     public static ApplicantDetailsImpl build(Applicant applicant) {
         List<GrantedAuthority> authorities = new ArrayList<>();
@@ -41,11 +39,6 @@ public class ApplicantDetailsImpl extends UserDetailsImpl {
     public int getPhone() {
         return phone;
     }
-
-    public String getStatus() {
-        return status;
-    }
-
 
 }
 

@@ -11,8 +11,8 @@ import java.util.*;
 public class Recruiter extends User implements Serializable {
 
 
-    public Recruiter(String email, String password, String fullname, String image,char gender) {
-        super(email, password, fullname, gender,image);
+    public Recruiter(String email, String password, String fullname) {
+        super(email, password, fullname);
     }
 
 // cascade = CascadeType.ALL

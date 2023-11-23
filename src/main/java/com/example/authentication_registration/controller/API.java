@@ -40,13 +40,11 @@ public class API {
     @Autowired
     JwtUtils jwtUtils;
 
-
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), (loginRequest.getPassword())));
-
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtUtils.generateJwtToken(authentication);
@@ -62,20 +60,15 @@ public class API {
                     userDetails.getId(),
                     userDetails.getFullName(),
                     userDetails.getUsername(),
-                    userDetails.getGender(),
-                    userDetails.getImage(),
                     userDetails.getBirthDate(),
                     userDetails.getAddress(),
                     userDetails.getPhone(),
-                    userDetails.getStatus(),
                     roles));
         }
         return ResponseEntity.ok(new JwtResponse(jwt,
                 userDetails.getId(),
                 userDetails.getFullName(),
                 userDetails.getUsername(),
-                userDetails.getGender(),
-                userDetails.getImage(),
                 roles));
 
     }
@@ -91,9 +84,7 @@ public class API {
         // Create new user's account
         User user = new User(signUpRequest.getEmail(),
                 encoder.encode(signUpRequest.getPassword()),
-                signUpRequest.getFullname(),
-                signUpRequest.getGender(),
-                signUpRequest.getPic());
+                signUpRequest.getFullname());
 
         String strRoles = signUpRequest.getRole();
          System.out.println("role :"+strRoles);
@@ -102,11 +93,11 @@ public class API {
         } else {
                 switch (strRoles) {
                     case "admin":
-                        Admin admin = new Admin(user.getEmail(),user.getPassword(),user.getFullname(),user.getImage(),user.getGender());
+                        Admin admin = new Admin(user.getEmail(),user.getPassword(),user.getFullname());
                         userRepository.save(admin);
                         break;
                     case "recruiter":
-                        Recruiter rec = new Recruiter(user.getEmail(),user.getPassword(),user.getFullname(),user.getImage(),user.getGender());
+                        Recruiter rec = new Recruiter(user.getEmail(),user.getPassword(),user.getFullname());
                         userRepository.save(rec);
                         break;
                     case "applicant" :
@@ -114,13 +105,10 @@ public class API {
                                 signUpRequest.getEmail(),
                                 encoder.encode(signUpRequest.getPassword()),
                                 signUpRequest.getFullname(),
-                                signUpRequest.getPic(),
                                 signUpRequest.getBirthDate(),
                                 signUpRequest.getAddress(),
-                                signUpRequest.getPhone(),
-                                user.getGender()
+                                signUpRequest.getPhone()
                         );
-
 
                         userRepository.save(applicant);
                         break;

@@ -4,7 +4,6 @@ import com.example.authentication_registration.model.*;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -18,8 +17,7 @@ public class AdminDetailsImpl extends UserDetailsImpl{
                 rec.getFullname(),
                 rec.getEmail(),
                 rec.getPassword(),
-                rec.getGender(),
-                rec.getImage(),authorities);
+                authorities);
     }
 
     public static AdminDetailsImpl build(Admin ad) {

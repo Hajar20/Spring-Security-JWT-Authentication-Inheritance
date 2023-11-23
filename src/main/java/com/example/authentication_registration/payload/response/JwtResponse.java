@@ -9,36 +9,27 @@ public class JwtResponse {
   private Long id;
   private String fullName;
   private String email;
-  private char gender;
-  private String image;
   private List<String> roles;
 
   private  Date birthDate;
   private String address;
   private int phone;
-  private String status;
 
-  public JwtResponse(String accessToken, Long id, String username, String email,char gender,String image ,List<String> roles) {
+  public JwtResponse(String accessToken, Long id, String username, String email,List<String> roles) {
     this.token = accessToken;
     this.id = id;
     this.fullName = username;
     this.email = email;
-    this.gender = gender;
-    this.image = image;
     this.roles = roles;
   }
-  public JwtResponse(String accessToken, Long id, String username, String email, char gender, String image , Date birthday,String address,int phone,String status, List<String> roles) {
+  public JwtResponse(String accessToken, Long id, String username, String email,Date birthday,String address,int phone, List<String> roles) {
     this.token = accessToken;
     this.id = id;
     this.fullName = username;
     this.email = email;
-    this.gender = gender;
-    this.image = image;
-
     this.birthDate = birthday;
     this.address = address;
     this.phone = phone;
-    this.status = status;
 
     this.roles = roles;
   }
@@ -66,14 +57,6 @@ public class JwtResponse {
 
   public void setPhone(int phone) {
     this.phone = phone;
-  }
-
-  public String getStatus() {
-    return status;
-  }
-
-  public void setStatus(String status) {
-    this.status = status;
   }
 
   public String getAccessToken() {
@@ -114,22 +97,6 @@ public class JwtResponse {
 
   public void setFullName(String username) {
     this.fullName = username;
-  }
-
-  public char getGender() {
-    return gender;
-  }
-
-  public void setGender(char gender) {
-    this.gender = gender;
-  }
-
-  public String getImage() {
-    return image;
-  }
-
-  public void setImage(String image) {
-    this.image = image;
   }
 
   public List<String> getRoles() {
